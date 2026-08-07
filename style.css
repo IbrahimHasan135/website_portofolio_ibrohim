@@ -57,23 +57,23 @@ body {
 
 .navbar-brand {
     font-weight: 700;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     color: var(--text-dark) !important;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.6rem;
 }
 
 .navbar-brand .brand-icon {
-    width: 36px;
-    height: 36px;
+    width: 42px;
+    height: 42px;
     background: linear-gradient(135deg, var(--primary), var(--purple));
-    border-radius: 8px;
+    border-radius: 9px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    font-size: 1rem;
+    font-size: 1.1rem;
 }
 
 .nav-link {
@@ -189,9 +189,9 @@ body {
 }
 
 .hero h1 {
-    font-size: 3.4rem;
+    font-size: clamp(2rem, 2.4vw + 1.6rem, 3rem);
     font-weight: 800;
-    line-height: 1.1;
+    line-height: 1.15;
     margin-bottom: 1.2rem;
     color: white;
     animation: fadeInUp 1.2s ease;
@@ -287,11 +287,20 @@ body {
     max-width: 48%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
     position: relative;
     z-index: 2;
-    padding-bottom: 40px;
+    align-self: stretch;
+    padding-top: 90px;
     animation: fadeInRight 1.5s ease;
+}
+
+.hero-profile-img {
+    width: min(540px, 43vw);
+    max-height: 640px;
+    object-fit: contain;
+    object-position: bottom center;
+    filter: drop-shadow(0 25px 35px rgba(0, 0, 0, 0.22));
 }
 
 @keyframes fadeInRight {
@@ -492,15 +501,12 @@ section {
     opacity: 0.3;
 }
 
-.photo-placeholder {
+.about-photo {
     width: 100%;
     height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 6rem;
-    color: var(--primary);
-    opacity: 0.25;
+    display: block;
+    object-fit: cover;
+    object-position: center top;
 }
 
 .frame-inner .award-badge {
@@ -519,22 +525,25 @@ section {
 }
 
 .stats-row {
-    display: flex;
-    gap: 2.5rem;
-    margin: 2rem 0;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.75rem;
+    margin: 1.6rem 0;
 }
 
 .stat-box {
     text-align: center;
-    padding: 1rem 1.5rem;
+    min-width: 0;
+    padding: 0.75rem 0.55rem;
     background: var(--bg-light);
-    border-radius: 12px;
+    border-radius: 10px;
 }
 
 .stat-num {
     display: block;
-    font-size: 2.2rem;
+    font-size: 1.65rem;
     font-weight: 700;
+    line-height: 1.1;
     background: linear-gradient(135deg, var(--primary), var(--purple));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -542,7 +551,11 @@ section {
 }
 
 .stat-label {
-    font-size: 0.85rem;
+    display: block;
+    margin-top: 0.25rem;
+    font-size: 0.72rem;
+    line-height: 1.2;
+    white-space: nowrap;
     color: var(--text-muted);
 }
 
@@ -564,6 +577,77 @@ section {
     transform: translateY(-3px);
     box-shadow: 0 10px 25px rgba(8, 86, 200, 0.35);
     color: white;
+}
+
+/* Credentials - Enhanced */
+.credential-card {
+    height: 100%;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.credential-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    border-color: transparent;
+}
+
+.credential-media {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(8, 86, 200, 0.08), rgba(108, 22, 172, 0.1));
+    border-bottom: 1px solid var(--border);
+    color: var(--primary);
+    font-size: 2rem;
+}
+
+.credential-media img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+    padding: 0.6rem;
+}
+
+.credential-body {
+    padding: 1.6rem;
+}
+
+.credential-type {
+    display: inline-block;
+    background: var(--bg-light);
+    color: var(--primary);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 0.35rem 0.8rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+.credential-card h3 {
+    color: var(--text-dark);
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.credential-source {
+    color: var(--purple);
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+}
+
+.credential-card p:last-child {
+    color: var(--text-muted);
+    margin-bottom: 0;
 }
 
 /* Skills - Enhanced */
@@ -694,6 +778,44 @@ section {
 }
 
 /* Projects - Enhanced Grid */
+.project-carousel {
+    padding: 0 3.5rem 3rem;
+}
+
+.project-carousel .carousel-inner {
+    overflow: visible;
+}
+
+.project-carousel .carousel-indicators {
+    bottom: -3rem;
+    margin-bottom: 0;
+}
+
+.project-carousel .carousel-indicators [data-bs-target] {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 0;
+    opacity: 0.55;
+}
+
+.project-carousel .carousel-indicators .active {
+    opacity: 1;
+}
+
+.project-carousel .carousel-control-prev,
+.project-carousel .carousel-control-next {
+    width: 3rem;
+}
+
+.project-carousel .carousel-control-prev {
+    left: -0.5rem;
+}
+
+.project-carousel .carousel-control-next {
+    right: -0.5rem;
+}
+
 .section-gradient .project-card {
     background: rgba(255, 255, 255, 0.95);
     border-radius: 20px;
@@ -710,7 +832,8 @@ section {
 }
 
 .section-gradient .project-img {
-    height: 150px;
+    aspect-ratio: 16 / 10;
+    min-height: 190px;
     background: linear-gradient(135deg, var(--primary), var(--purple));
     display: flex;
     align-items: center;
@@ -733,6 +856,14 @@ section {
 .section-gradient .project-img i {
     font-size: 3.2rem;
     color: white;
+}
+
+.section-gradient .project-img img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
 }
 
 .section-gradient .project-content {
@@ -787,129 +918,6 @@ section {
     font-size: 0.75rem;
     color: var(--purple);
     font-weight: 500;
-}
-
-/* Novalynk - Enhanced Card */
-.novalynk-card {
-    background: white;
-    border-radius: 24px;
-    padding: 3.5rem 2.5rem;
-    text-align: center;
-    box-shadow: 0 20px 50px rgba(108, 22, 172, 0.12);
-    position: relative;
-    overflow: hidden;
-}
-
-.novalynk-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 6px;
-    background: linear-gradient(90deg, var(--primary), var(--purple));
-}
-
-.novalynk-card::after {
-    content: '';
-    position: absolute;
-    top: -50px;
-    right: -50px;
-    width: 150px;
-    height: 150px;
-    background: linear-gradient(135deg, var(--primary), var(--purple));
-    opacity: 0.05;
-    border-radius: 50%;
-}
-
-.novalynk-logo {
-    width: 110px;
-    height: 110px;
-    background: linear-gradient(135deg, var(--primary), var(--purple));
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 3.2rem;
-    font-weight: 800;
-    color: white;
-    margin: 0 auto 1.8rem;
-    box-shadow: 0 15px 35px rgba(108, 22, 172, 0.25);
-    position: relative;
-    z-index: 1;
-}
-
-.novalynk-card h3 {
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--text-dark);
-    margin-bottom: 0.3rem;
-    position: relative;
-    z-index: 1;
-}
-
-.novalynk-role {
-    color: var(--purple);
-    font-weight: 600;
-    font-size: 1rem;
-    margin-bottom: 0.3rem;
-    position: relative;
-    z-index: 1;
-}
-
-.novalynk-role i {
-    color: #f59e0b;
-    margin-right: 0.4rem;
-}
-
-.novalynk-tagline {
-    color: var(--primary);
-    font-weight: 600;
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
-    position: relative;
-    z-index: 1;
-}
-
-.novalynk-desc {
-    color: var(--text-muted);
-    font-size: 1rem;
-    margin-bottom: 1.5rem;
-    line-height: 1.7;
-    position: relative;
-    z-index: 1;
-}
-
-.novalynk-features {
-    margin-bottom: 1.8rem;
-    position: relative;
-    z-index: 1;
-}
-
-.novalynk-features div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.6rem;
-    padding: 0.6rem 0;
-    color: var(--text-muted);
-}
-
-.novalynk-features i {
-    color: var(--primary);
-}
-
-.novalynk-status {
-    display: inline-block;
-    background: linear-gradient(135deg, var(--primary), var(--purple));
-    color: white;
-    padding: 0.6rem 1.8rem;
-    border-radius: 50px;
-    font-weight: 600;
-    font-size: 0.95rem;
-    box-shadow: 0 8px 20px rgba(8, 86, 200, 0.25);
-    position: relative;
-    z-index: 1;
 }
 
 /* Contact - Enhanced */
@@ -991,11 +999,7 @@ footer {
         max-width: 100%;
         padding-top: 0;
     }
-    
-    .hero h1 {
-        font-size: 2.6rem;
-    }
-    
+
     .hero-subtitle {
         max-width: 100%;
     }
@@ -1007,6 +1011,22 @@ footer {
     .hero-visual {
         max-width: 100%;
         margin-top: 2.5rem;
+        align-self: center;
+        padding-top: 0;
+    }
+
+    .hero-profile-img {
+        width: min(390px, 88vw);
+        max-height: 470px;
+    }
+
+    .stats-row {
+        grid-template-columns: repeat(2, minmax(0, 150px));
+        justify-content: center;
+    }
+
+    .project-carousel {
+        padding: 0 2.5rem 3rem;
     }
     
     .pcb-board {
@@ -1016,16 +1036,44 @@ footer {
 }
 
 @media (max-width: 767px) {
-    .hero h1 {
-        font-size: 2rem;
-    }
-    
     .section-title {
         font-size: 1.9rem;
     }
     
     .stats-row {
-        justify-content: center;
+        gap: 0.6rem;
+    }
+
+    .stat-box {
+        padding: 0.7rem 0.45rem;
+    }
+
+    .stat-num {
+        font-size: 1.45rem;
+    }
+
+    .stat-label {
+        font-size: 0.68rem;
+    }
+
+    .project-carousel {
+        padding: 0 0 3rem;
+    }
+
+    .project-carousel .carousel-control-prev,
+    .project-carousel .carousel-control-next {
+        top: auto;
+        bottom: -0.4rem;
+        width: 2.6rem;
+        height: 2.6rem;
+    }
+
+    .project-carousel .carousel-control-prev {
+        left: 1rem;
+    }
+
+    .project-carousel .carousel-control-next {
+        right: 1rem;
     }
     
     .footer-content {
