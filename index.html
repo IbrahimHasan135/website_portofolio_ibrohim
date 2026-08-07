@@ -433,17 +433,18 @@
             <p class="text-center mb-5">Let's discuss the system in depth — impact starts with an honest analysis.</p>
             <div class="row justify-content-center">
                 <div class="col-lg-8">
-                    <form class="contact-form">
+                    <form class="contact-form" action="https://formspree.io/f/xzzgeeyk" method="POST">
                         <div class="row g-3">
                             <div class="col-md-6">
-                                <input type="text" class="form-control" placeholder="Your Name" required>
+                                <input type="text" class="form-control" name="name" placeholder="Your Name" required>
                             </div>
                             <div class="col-md-6">
-                                <input type="email" class="form-control" placeholder="Your Email" required>
+                                <input type="email" class="form-control" name="email" placeholder="Your Email" required>
                             </div>
                             <div class="col-12">
-                                <textarea class="form-control" rows="4" placeholder="Your Message" required></textarea>
+                                <textarea class="form-control" name="message" rows="4" placeholder="Your Message" required></textarea>
                             </div>
+                            <input type="hidden" name="_subject" value="New portfolio message from ibrohimhasan.my.id">
                             <div class="col-12 text-center">
                                 <button type="submit" class="btn btn-download">
                                     <i class="fas fa-paper-plane"></i> Send Message
